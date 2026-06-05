@@ -15,7 +15,7 @@ export const BlockedScreen = () => {
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
                 <Ionicons name="lock-closed" size={150} color="#FF0000" style={styles.icon} />
-                
+
                 <Text style={styles.title}>Acceso bloqueado</Text>
                 <Text style={styles.subtitle}>
                     Has superado el numero maximo{'\n'}de intentos fallidos
@@ -30,10 +30,10 @@ export const BlockedScreen = () => {
                     <Text style={styles.helpText}>¿Necesitas ayuda?</Text>
                 </TouchableOpacity>
 
-                <Button 
-                    title="Volver al inicio" 
-                    variant="primary" 
-                    onPress={() => navigation.navigate('LoginSocial')} 
+                <Button
+                    title="Volver al inicio"
+                    variant="primary"
+                    onPress={() => navigation.navigate('Login')}
                     style={styles.button}
                 />
             </View>
