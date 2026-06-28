@@ -3,8 +3,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Home, Gavel, Package, Users, ShoppingBag } from 'lucide-react-native';
 
-import { HomeScreen } from '../features/home/screens/HomeScreen';
-import { StoresScreen } from '../features/stores/screens/StoresScreen';
+import { HomeScreen } from '../app/home/screens/HomeScreen';
+import { StoresScreen } from '../app/stores/screens/StoresScreen';
 
 const Tab = createBottomTabNavigator();
 

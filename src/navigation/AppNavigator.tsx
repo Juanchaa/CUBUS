@@ -3,14 +3,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { RootStackParamList } from './types';
 
-import { WelcomeScreen } from '../features/onboarding/screens/WelcomeScreen';
-import { IntroScreen } from '../features/onboarding/screens/IntroScreen';
-import { LoginScreen } from '../features/auth/screens/LoginScreen';
-import { RegisterScreen } from '../features/auth/screens/RegisterScreen';
-import { ForgotPasswordScreen } from '../features/auth/screens/ForgotPasswordScreen';
-import { EmailVerificationScreen } from '../features/auth/screens/EmailVerificationScreen';
-import { BlockedScreen } from '../features/auth/screens/BlockedScreen';
-import { SuccessScreen } from '../features/auth/screens/SuccessScreen';
+import { WelcomeScreen } from '../app/onboarding/screens/WelcomeScreen';
+import { IntroScreen } from '../app/onboarding/screens/IntroScreen';
+import { LoginScreen } from '../app/auth/screens/LoginScreen';
+import { RegisterScreen } from '../app/auth/screens/RegisterScreen';
+import { ForgotPasswordScreen } from '../app/auth/screens/ForgotPasswordScreen';
+import { EmailVerificationScreen } from '../app/auth/screens/EmailVerificationScreen';
+import { BlockedScreen } from '../app/auth/screens/BlockedScreen';
+import { SuccessScreen } from '../app/auth/screens/SuccessScreen';
 import { MainTabNavigator } from './MainTabNavigator';
 
 const Stack = createStackNavigator<RootStackParamList>();
