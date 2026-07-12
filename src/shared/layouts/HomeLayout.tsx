@@ -1,19 +1,25 @@
 import React, { ReactNode } from 'react';
 import { View, StyleSheet, TouchableOpacity, Image, Text, ViewStyle } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Menu, Search, MessageSquareText } from 'lucide-react-native';
+import { Menu, Search, MessageSquareText, ChevronLeft } from 'lucide-react-native';
 import { colors } from '../theme/colors';
 
 interface HomeLayoutProps {
   children: ReactNode;
   backgroundColor?: string;
   style?: ViewStyle;
+  showBack?: boolean;
+  title?: string;
+  headerRight?: ReactNode;
 }
 
 export const HomeLayout = ({
   children,
   backgroundColor = colors.background,
   style,
+  showBack,
+  title,
+  headerRight,
 }: HomeLayoutProps) => {
   return (
     <SafeAreaView
@@ -21,28 +27,44 @@ export const HomeLayout = ({
       style={[styles.screen, { backgroundColor }, style]}
     >
       <View style={styles.header}>
-        <TouchableOpacity>
-          <Menu size={28} color={colors.dark} />
-        </TouchableOpacity>
+        {showBack ? (
+          <TouchableOpacity>
+            <ChevronLeft size={28} color={colors.dark} />
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity>
+            <Menu size={28} color={colors.dark} />
+          </TouchableOpacity>
+        )}
 
         <View style={styles.logoContainer}>
-          <Image
-            source={require('../../../assets/images/Logo.png')}
-            style={styles.headerLogo}
-            resizeMode="contain"
-          />
+          {title ? (
+            <Text style={styles.headerTitle}>{title}</Text>
+          ) : (
+            <Image
+              source={require('../../../assets/images/Logo.png')}
+              style={styles.headerLogo}
+              resizeMode="contain"
+            />
+          )}
         </View>
 
         <View style={styles.headerIcons}>
-          <TouchableOpacity style={styles.iconButton}>
-            <Search size={24} color={colors.dark} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconButton}>
-            <View style={styles.badge}>
-              <Text style={styles.badgeText}>3</Text>
-            </View>
-            <MessageSquareText size={24} color={colors.dark} />
-          </TouchableOpacity>
+          {headerRight ? (
+            headerRight
+          ) : (
+            <>
+              <TouchableOpacity style={styles.iconButton}>
+                <Search size={24} color={colors.dark} />
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.iconButton}>
+                <View style={styles.badge}>
+                  <Text style={styles.badgeText}>3</Text>
+                </View>
+                <MessageSquareText size={24} color={colors.dark} />
+              </TouchableOpacity>
+            </>
+          )}
         </View>
       </View>
 
@@ -72,6 +94,11 @@ const styles = StyleSheet.create({
   headerLogo: {
     height: 30,
     width: 140,
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: colors.dark,
   },
   headerIcons: {
     flexDirection: 'row',

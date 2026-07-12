@@ -5,6 +5,7 @@ import { Home, Gavel, Package, Users, ShoppingBag } from 'lucide-react-native';
 
 import { HomeScreen } from '../app/home/screens/HomeScreen';
 import { StoresScreen } from '../app/stores/screens/StoresScreen';
+import { Colections } from '../app/colections/screens/Colections';
 
 const Tab = createBottomTabNavigator();
 
@@ -48,7 +49,7 @@ export const MainTabNavigator = () => {
     >
       <Tab.Screen name="Inicio" component={HomeScreen} />
       <Tab.Screen name="Subastas" component={HomeScreen} />
-      <Tab.Screen name="Colecciones" component={HomeScreen} />
+      <Tab.Screen name="Colecciones" component={Colections} />
       <Tab.Screen name="Comunidades" component={HomeScreen} />
       <Tab.Screen name="Tiendas" component={StoresScreen} />
     </Tab.Navigator>
