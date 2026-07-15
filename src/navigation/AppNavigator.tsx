@@ -12,6 +12,7 @@ import { EmailVerificationScreen } from '../app/auth/screens/EmailVerificationSc
 import { BlockedScreen } from '../app/auth/screens/BlockedScreen';
 import { SuccessScreen } from '../app/auth/screens/SuccessScreen';
 import { MainTabNavigator } from './MainTabNavigator';
+import { CreateCollection } from '../app/collections/screens/CreateCollection';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -19,7 +20,7 @@ export const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Welcome"
+        initialRouteName="MainTabs" // CAMBIAR
         screenOptions={{
           headerShown: false,
           cardStyle: { backgroundColor: '#FFFFFF' },
@@ -34,6 +35,8 @@ export const AppNavigator = () => {
         <Stack.Screen name="Blocked" component={BlockedScreen} />
         <Stack.Screen name="Success" component={SuccessScreen} />
         <Stack.Screen name="MainTabs" component={MainTabNavigator} />
+
+        <Stack.Screen name="CreateCollection" component={CreateCollection} />
       </Stack.Navigator>
     </NavigationContainer>
   );
