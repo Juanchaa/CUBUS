@@ -1,7 +1,8 @@
 import React, { ReactNode } from 'react';
 import { View, StyleSheet, TouchableOpacity, Image, Text, ViewStyle } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Edge, SafeAreaView } from 'react-native-safe-area-context';
 import { Menu, Search, MessageSquareText, ChevronLeft } from 'lucide-react-native';
+import { useNavigation } from '@react-navigation/native';
 import { colors } from '../theme/colors';
 
 interface HomeLayoutProps {
@@ -10,7 +11,8 @@ interface HomeLayoutProps {
   style?: ViewStyle;
   showBack?: boolean;
   title?: string;
-  headerRight?: ReactNode;
+  headerRight?: ReactNode | false;
+  includeBottomSafeArea?: boolean;
 }
 
 export const HomeLayout = ({
@@ -20,15 +22,22 @@ export const HomeLayout = ({
   showBack,
   title,
   headerRight,
+  includeBottomSafeArea = false,
 }: HomeLayoutProps) => {
+  const navigation = useNavigation();
+
+  var edges: Edge[] = ['top', 'left', 'right'];
+  if (includeBottomSafeArea) edges.push('bottom');
+
   return (
+
     <SafeAreaView
-      edges={['top', 'left', 'right']}
+      edges={edges}
       style={[styles.screen, { backgroundColor }, style]}
     >
       <View style={styles.header}>
         {showBack ? (
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
             <ChevronLeft size={28} color={colors.dark} />
           </TouchableOpacity>
         ) : (
@@ -50,7 +59,9 @@ export const HomeLayout = ({
         </View>
 
         <View style={styles.headerIcons}>
-          {headerRight ? (
+          {headerRight === false ? (
+            <></>
+          ) : headerRight ? (
             headerRight
           ) : (
             <>

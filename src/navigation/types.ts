@@ -10,6 +10,7 @@ export type RootStackParamList = {
     Blocked: undefined;
     Success: { message: string }; // Pantalla para "Contraseña actualizada"
     MainTabs: undefined; // The bottom tab navigator
+    CreateCollection: undefined;
 };
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> =

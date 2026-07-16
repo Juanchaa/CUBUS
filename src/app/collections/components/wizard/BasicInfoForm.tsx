@@ -35,8 +35,8 @@ export default function StepBasicInfo({ data, onChange }: StepBasicInfoProps) {
                         <View style={styles.photoIconWrap}>
                             <Camera size={20} color={colors.skyBlue} />
                         </View>
-                        <Text style={styles.photoLabel}>Agregar foto</Text>
-                        <Text style={styles.photoHint}>JPG, PNG (máx. 5MB)</Text>
+                        <Text style={styles.photoLabel}>Agregar foto de portada</Text>
+                        <Text style={styles.photoHint}>máximo 5MB</Text>
                     </>
                 )}
             </TouchableOpacity>
@@ -68,8 +68,8 @@ export default function StepBasicInfo({ data, onChange }: StepBasicInfoProps) {
             <View>
                 <Text style={styles.label}>¿Quién puede verla?</Text>
                 {[
-                    { value: 'public', title: 'Pública', desc: 'Cualquiera puede ver tu colección' },
-                    { value: 'private', title: 'Privada', desc: 'Solo tú puedes ver tu colección' },
+                    { value: 'public', title: 'Todos', desc: 'Cualquier usuario puede ver tu colección' },
+                    { value: 'private', title: 'Solo yo', desc: 'Solo tú puedes ver tu colección' },
                 ].map((opt) => (
                     <TouchableOpacity
                         key={opt.value}

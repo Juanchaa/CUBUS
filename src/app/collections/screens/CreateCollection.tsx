@@ -5,8 +5,8 @@ import CreateCollectionWizard from '../components/wizard/CreateCollectionForm';
 
 export const CreateCollection = ({ navigation }: any) => {
     const handleComplete = (basicInfo: any, fields: any[]) => {
-        console.log('Colección creada:', basicInfo, fields);
-        // TODO: Lógica para guardar la colección
+        //console.log('Colección creada:', basicInfo, fields);
+        //Lógica para guardar la colección
         if (navigation?.goBack) {
             navigation.goBack();
         }
@@ -19,7 +19,7 @@ export const CreateCollection = ({ navigation }: any) => {
     };
 
     return (
-        <HomeLayout showBack title="Nueva colección">
+        <HomeLayout showBack title="Nueva colección" headerRight={false} includeBottomSafeArea>
             <View style={styles.container}>
                 <CreateCollectionWizard
                     onComplete={handleComplete}

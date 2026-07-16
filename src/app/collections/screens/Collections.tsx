@@ -1,9 +1,10 @@
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image } from 'react-native';
-import { ChevronRight } from 'lucide-react-native';
 import { useNavigation } from '@react-navigation/native';
 import { HomeLayout } from '../../../shared/layouts/HomeLayout';
+import { Button } from '../../../shared/components/Button';
 import { colors } from '../../../shared/theme/colors';
 import { CollectionCard } from '../components/CollectionCard';
+import { Ionicons } from '@expo/vector-icons';
 
 export const Collections = () => {
   const navigation = useNavigation<any>();
@@ -13,9 +14,12 @@ export const Collections = () => {
       showBack
       title="Colecciones"
       headerRight={
-        <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate('CreateCollection')}>
-          <Text style={styles.addButtonText}>+</Text>
-        </TouchableOpacity>
+        <Button
+          onPress={() => navigation.navigate('CreateCollection')}
+          variant="primaryBlue"
+          style={styles.addButton}
+          icon={<Ionicons name="add" size={20} color={colors.white} />}
+        />
       }
     >
       <View style={styles.emptyState}>
@@ -41,14 +45,8 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: colors.skyBlue,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  addButtonText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: colors.white,
+    marginVertical: 0,
+    paddingHorizontal: 0,
   },
   emptyState: {
     flex: 1,

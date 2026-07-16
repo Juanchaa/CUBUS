@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
-import StepIndicator from './StepIndicatorForm';
+import StepIndicator from '../../../../shared/components/StepIndicator';
 import StepBasicInfo from './BasicInfoForm';
 import StepDefineFields from './DefineFieldsForm';
+import PreviewCollection from './PreviewCollection';
+import { Button } from '../../../../shared/components/Button';
 import { CollectionBasicInfo, FieldDefinition } from '../../types';
 import { colors } from '../../../../shared/theme/colors';
 
-const TOTAL_STEPS = 2;
+const TOTAL_STEPS = 3;
 
 interface CreateCollectionWizardProps {
     onComplete: (basicInfo: CollectionBasicInfo, fields: FieldDefinition[]) => void;
@@ -57,24 +59,25 @@ export default function CreateCollectionWizard({ onComplete, onCancel }: CreateC
                 {step === 2 && (
                     <StepDefineFields fields={fields} onAddField={handleAddField} onReorder={setFields} />
                 )}
+                {step === 3 && <PreviewCollection basicInfo={basicInfo} fields={fields} />}
             </ScrollView>
 
             <View style={styles.footer}>
                 {step > 1 && (
-                    <TouchableOpacity
-                        style={styles.backButton}
+                    <Button
+                        title="Atrás"
                         onPress={handleBack}
-                    >
-                        <Text style={styles.backButtonText}>Atrás</Text>
-                    </TouchableOpacity>
+                        variant="secondaryOutline"
+                        style={{ flex: 1, marginVertical: 0 }}
+                    />
                 )}
-                <TouchableOpacity
-                    style={[styles.nextButton, isNextDisabled && styles.nextButtonDisabled]}
+                <Button
+                    title={step === TOTAL_STEPS ? 'Crear' : 'Siguiente'}
                     onPress={handleNext}
+                    variant={isNextDisabled ? 'disabledBlue' : 'primaryBlue'}
                     disabled={isNextDisabled}
-                >
-                    <Text style={styles.nextButtonText}>{step === TOTAL_STEPS ? 'Crear' : 'Siguiente'}</Text>
-                </TouchableOpacity>
+                    style={{ flex: 1, marginVertical: 0 }}
+                />
             </View>
         </View>
     );
@@ -83,34 +86,11 @@ export default function CreateCollectionWizard({ onComplete, onCancel }: CreateC
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: colors.white },
     content: { paddingHorizontal: 16, paddingBottom: 16 },
-    footer: { 
-        padding: 16, 
-        borderTopWidth: 1, 
+    footer: {
+        padding: 16,
+        borderTopWidth: 1,
         borderTopColor: colors.borderLight,
         flexDirection: 'row',
         gap: 12
-    },
-    nextButton: { 
-        flex: 1,
-        backgroundColor: colors.skyBlue, 
-        borderRadius: 10, 
-        paddingVertical: 14, 
-        alignItems: 'center' 
-    },
-    nextButtonDisabled: { backgroundColor: colors.border },
-    nextButtonText: { color: colors.white, fontSize: 16, fontWeight: '700' },
-    backButton: {
-        flex: 1,
-        backgroundColor: colors.white,
-        borderRadius: 10,
-        paddingVertical: 14,
-        alignItems: 'center',
-        borderWidth: 1,
-        borderColor: colors.border
-    },
-    backButtonText: {
-        color: colors.dark,
-        fontSize: 16,
-        fontWeight: '700'
     }
 });
