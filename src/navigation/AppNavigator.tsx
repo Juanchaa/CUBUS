@@ -13,6 +13,7 @@ import { BlockedScreen } from '../app/auth/screens/BlockedScreen';
 import { SuccessScreen } from '../app/auth/screens/SuccessScreen';
 import { MainTabNavigator } from './MainTabNavigator';
 import { CreateCollection } from '../app/collections/screens/CreateCollection';
+import { CollectionCreatedScreen } from '../app/collections/screens/CollectionCreatedScreen';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -37,6 +38,7 @@ export const AppNavigator = () => {
         <Stack.Screen name="MainTabs" component={MainTabNavigator} />
 
         <Stack.Screen name="CreateCollection" component={CreateCollection} />
+        <Stack.Screen name="CollectionCreated" component={CollectionCreatedScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

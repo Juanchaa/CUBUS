@@ -5,11 +5,9 @@ import CreateCollectionWizard from '../components/wizard/CreateCollectionForm';
 
 export const CreateCollection = ({ navigation }: any) => {
     const handleComplete = (basicInfo: any, fields: any[]) => {
-        //console.log('Colección creada:', basicInfo, fields);
-        //Lógica para guardar la colección
-        if (navigation?.goBack) {
-            navigation.goBack();
-        }
+        // TODO: llamar a createCollection(basicInfo, fields) de collectionsApi.ts
+        // acá antes de navegar, cuando el backend confirme el contrato.
+        navigation?.navigate?.('CollectionCreated');
     };
 
     const handleCancel = () => {
